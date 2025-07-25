@@ -31,7 +31,7 @@ public class CommonTests {
         userName.selectByVisibleText("Administrator");
 
         Select userLanguage=new Select(driver.findElement(By.xpath("//select[@id='field-language']")));
-        userName.selectByVisibleText("English (US)");
+        userLanguage.selectByValue("en_US");
 
         driver.findElement(By.xpath("//button[text()='Login']")).click();
     }
@@ -39,10 +39,34 @@ public class CommonTests {
 
     @AfterMethod
     public void tearDown() throws InterruptedException {
-        Thread.sleep(5000);
+        Thread.sleep(15000);
         if (driver != null) {
             driver.quit();
         }
+    }
+
+    public String getName(){
+        return faker.name().name();
+    }
+
+    public String getWebsite(){
+        return faker.internet().url();
+    }
+
+    public String getEmail(){
+        return faker.internet().emailAddress();
+    }
+
+    public String getPhoneNumber(){
+        return faker.phoneNumber().phoneNumber();
+    }
+
+    public String getStreetAddress(){
+        return faker.address().streetAddress();
+    }
+
+    public String getCityName(){
+        return faker.address().cityName();
     }
 
 
