@@ -18,5 +18,13 @@ public class CreateAccountTC1 extends CommonTests {
         createAccount.EnterOfficeNumber(getPhoneNumber());
         createAccount.EnterBillingStreetAddress(getStreetAddress());
         createAccount.EnterBillingCity(getCityName());
+        createAccount.EnterBillingState(getStateName());
+        createAccount.EnterBillingPostalCode(getPostalCode());
+        createAccount.EnterBillingCountry(getCountryName());
+        createAccount.EnterShippingStreetAddress(getStreetAddress());
+        createAccount.EnterShippingCity(getCityName());
+        createAccount.EnterShippingState(getStateName());
+        createAccount.EnterShippingPostalCode(getPostalCode());
+        createAccount.EnterShippingCountry(getCountryName());
     }
 }

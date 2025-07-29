@@ -69,5 +69,15 @@ public class CommonTests {
         return faker.address().cityName();
     }
 
+    public String getStateName(){
+       return faker.address().state();
+    }
 
+    public String getPostalCode(){
+        return faker.address().zipCode();
+    }
+
+    public String getCountryName(){
+        return faker.address().country();
+    }
 }

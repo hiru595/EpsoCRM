@@ -38,6 +38,30 @@ public class CreateAccount extends BasePage{
     @FindBy (xpath = "//input[@data-name='billingAddressCity']")
     WebElement Txt_BillingCity;
 
+    @FindBy (xpath = "//input[@data-name='billingAddressState']")
+    WebElement Txt_BillingState;
+
+    @FindBy (xpath = "//input[@data-name='billingAddressPostalCode']")
+    WebElement Txt_BillingPostalCode;
+
+    @FindBy (xpath = "//input[@data-name='billingAddressCountry']")
+    WebElement Txt_BillingCountry;
+
+    @FindBy (xpath = "//textarea[@data-name='shippingAddressStreet']")
+    WebElement Txt_ShippingStreet;
+
+    @FindBy (xpath = "//input[@data-name='shippingAddressCity']")
+    WebElement Txt_ShippingCity;
+
+    @FindBy (xpath = "//input[@data-name='shippingAddressState']")
+    WebElement Txt_ShippingState;
+
+    @FindBy (xpath = "//input[@data-name='shippingAddressPostalCode']")
+    WebElement Txt_ShippingPostalCode;
+
+    @FindBy (xpath = "//input[@data-name='shippingAddressCountry']")
+    WebElement Txt_ShippingCountry;
+
     public void ClickCreatePlusIcon(){
         wait.until(ExpectedConditions.visibilityOf(CreateMenuIcon));
         CreateMenuIcon.click();
@@ -73,7 +97,41 @@ public class CreateAccount extends BasePage{
         Txt_BillingStreet.sendKeys(billingStreet);
     }
 
-    public void EnterBillingCity(String cityName){
-        Txt_BillingCity.sendKeys(cityName);
+    public void EnterBillingCity(String billingCity){
+        Txt_BillingCity.sendKeys(billingCity);
     }
+
+    public void EnterBillingState(String billingState){
+        Txt_BillingState.sendKeys(billingState);
+    }
+
+    public void EnterBillingPostalCode(String billingPostalCode){
+        Txt_BillingPostalCode.sendKeys(billingPostalCode);
+    }
+
+    public void EnterBillingCountry(String billingCountry){
+        Txt_BillingCountry.sendKeys(billingCountry);
+    }
+
+    public void EnterShippingStreetAddress(String shippingStreet){
+        Txt_ShippingStreet.sendKeys(shippingStreet);
+    }
+
+    public void EnterShippingCity(String shippingCity){
+        Txt_ShippingCity.sendKeys(shippingCity);
+    }
+
+    public void EnterShippingState(String shippingState){
+        Txt_ShippingState.sendKeys(shippingState);
+    }
+
+    public void EnterShippingPostalCode(String shippingPostalCode){
+        Txt_ShippingPostalCode.sendKeys(shippingPostalCode);
+    }
+
+    public void EnterShippingCountry(String shippingCountry){
+        Txt_ShippingCountry.sendKeys(shippingCountry);
+    }
+
+
 }
