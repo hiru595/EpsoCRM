@@ -2,6 +2,7 @@ package TestCase.CreateAccount;
 
 import BaseTest.CommonTests;
 import PageNames.CreateAccount;
+import UtilityFiles.propertiesReader;
 import org.testng.annotations.Test;
 
 public class CreateAccountTC1 extends CommonTests {
@@ -26,5 +27,8 @@ public class CreateAccountTC1 extends CommonTests {
         createAccount.EnterShippingState(getStateName());
         createAccount.EnterShippingPostalCode(getPostalCode());
         createAccount.EnterShippingCountry(getCountryName());
+        createAccount.SelectAccountType();
+        createAccount.SelectIndustryType();
+        createAccount.EnterDescription(propertiesReader.readKey("AccountDescription"));
     }
 }

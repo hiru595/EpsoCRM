@@ -62,6 +62,24 @@ public class CreateAccount extends BasePage{
     @FindBy (xpath = "//input[@data-name='shippingAddressCountry']")
     WebElement Txt_ShippingCountry;
 
+    @FindBy (xpath = "//div[@data-name='type']//div[contains(@class,'selectize-input')]")
+    WebElement PickList_Type;
+
+    @FindBy (xpath = "//div[text()='Customer']")
+    WebElement PickListValueType_Customer;
+
+    @FindBy (xpath = "//div[text()='Partner']")
+    WebElement PickListValueType_Partner;
+
+    @FindBy (xpath = "//div[@data-name='industry']//div[contains(@class,'selectize-input')]")
+    WebElement PickList_Industry;
+
+    @FindBy (xpath = "//div[text()='Healthcare']")
+    WebElement PickListValueIndustry_Healthcare;
+
+    @FindBy (xpath = "//textarea[@data-name='description']")
+    WebElement Txt_Description;
+
     public void ClickCreatePlusIcon(){
         wait.until(ExpectedConditions.visibilityOf(CreateMenuIcon));
         CreateMenuIcon.click();
@@ -133,5 +151,22 @@ public class CreateAccount extends BasePage{
         Txt_ShippingCountry.sendKeys(shippingCountry);
     }
 
+    public void SelectAccountType(){
+        wait.until(ExpectedConditions.visibilityOf(PickList_Type));
+        PickList_Type.click();
+        wait.until(ExpectedConditions.visibilityOf(PickListValueType_Customer));
+        PickListValueType_Customer.click();
+    }
+
+    public void SelectIndustryType(){
+        wait.until(ExpectedConditions.visibilityOf(PickList_Industry));
+        PickList_Industry.click();
+        wait.until(ExpectedConditions.visibilityOf(PickListValueIndustry_Healthcare));
+        PickListValueIndustry_Healthcare.click();
+    }
+
+    public void EnterDescription(String accountDescription){
+        Txt_Description.sendKeys(accountDescription);
+    }
 
 }

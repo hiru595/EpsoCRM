@@ -80,4 +80,5 @@ public class CommonTests {
     public String getCountryName(){
         return faker.address().country();
     }
+
 }
