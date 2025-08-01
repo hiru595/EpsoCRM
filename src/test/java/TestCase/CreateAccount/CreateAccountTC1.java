@@ -30,5 +30,8 @@ public class CreateAccountTC1 extends CommonTests {
         createAccount.SelectAccountType();
         createAccount.SelectIndustryType();
         createAccount.EnterDescription(propertiesReader.readKey("AccountDescription"));
+        createAccount.SelectAssignedUser();
+        createAccount.SelectTeam();
+        createAccount.ClickSaveBtn();
     }
 }

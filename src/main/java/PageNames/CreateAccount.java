@@ -5,6 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
+import java.util.List;
+
 public class CreateAccount extends BasePage{
 
     public CreateAccount (WebDriver driver){
@@ -79,6 +81,25 @@ public class CreateAccount extends BasePage{
 
     @FindBy (xpath = "//textarea[@data-name='description']")
     WebElement Txt_Description;
+
+    @FindBy (xpath = "//input[@data-name='assignedUserName']")
+    WebElement PickList_AssignedUserName;
+
+    @FindBy (xpath = "//div[text()='Jack Adams']")
+    List<WebElement> PickListValue_AssignedUserName;
+
+    @FindBy (xpath = "//div[@data-name='teams']//input[contains(@class,'main-element')]")
+    WebElement PickList_Teams;
+
+    @FindBy (xpath = "//div[text()='Sales']")
+    WebElement PickListValue_Teams;
+
+    @FindBy (xpath = "//button[text()='Save']")
+    WebElement Btn_Save;
+
+    @FindBy (xpath = "//p[text()='Name is required']")
+    WebElement ErrMsg_MandatoryAccountName;
+
 
     public void ClickCreatePlusIcon(){
         wait.until(ExpectedConditions.visibilityOf(CreateMenuIcon));
@@ -166,7 +187,30 @@ public class CreateAccount extends BasePage{
     }
 
     public void EnterDescription(String accountDescription){
+        wait.until(ExpectedConditions.visibilityOf(Txt_Description));
         Txt_Description.sendKeys(accountDescription);
+    }
+
+    public void SelectAssignedUser(){
+        wait.until(ExpectedConditions.visibilityOf(PickList_AssignedUserName));
+        PickList_AssignedUserName.click();
+        wait.until(ExpectedConditions.visibilityOf(PickListValue_AssignedUserName.get(0)));
+        PickListValue_AssignedUserName.get(0).click();
+    }
+
+    public void SelectTeam(){
+        wait.until(ExpectedConditions.visibilityOf(PickList_Teams)).click();
+        wait.until(ExpectedConditions.visibilityOf(PickListValue_Teams)).click();
+    }
+
+    public void ClickSaveBtn(){
+        wait.until(ExpectedConditions.visibilityOf(Btn_Save));
+        Btn_Save.click();
+    }
+
+    public String getMandatoryAccNameErrMsg(){
+        wait.until(ExpectedConditions.visibilityOf(ErrMsg_MandatoryAccountName));
+        return ErrMsg_MandatoryAccountName.getText();
     }
 
 }
