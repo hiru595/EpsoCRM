@@ -2,20 +2,26 @@ package TestCase.CreateAccount;
 
 import BaseTest.CommonTests;
 import PageNames.CreateAccount;
-import UtilityFiles.propertiesReader;
-import org.testng.Assert;
+import UtilityFiles.TestDataGenerator;
+import io.qameta.allure.Description;
 import org.testng.annotations.Test;
 
 public class CreateAccountTC2 extends CommonTests {
+
     @Test
+    @Description //Cancel Create Account
     public void TC2_CreateAccount(){
         CreateAccount createAccount=new CreateAccount(driver);
-        createAccount.ClickCreatePlusIcon();
-        createAccount.ClickCreateAccount();
-        createAccount.ClickFullFormBtn();
-        createAccount.ClickSaveBtn();
+        TestDataGenerator data = new TestDataGenerator();
 
-        String MandatoryAccountNameError=createAccount.getMandatoryAccNameErrMsg();
-        Assert.assertEquals(propertiesReader.readKey("AccountmandatoryErrorMsg"),MandatoryAccountNameError);
-    }
+        createAccount.clickCreateBtnIcon();
+        createAccount.clickCreateAccountLink();
+        createAccount.clickButtonFullForm();
+        createAccount.enterName(data.getName());
+        createAccount.enterWebsite(data.getWebsite());
+        createAccount.enterEmail(data.getEmail());
+        createAccount.enterPhone(data.getPhoneNumber());
+        createAccount.enterBillingStreet(data.getStreetAddress());
+        createAccount.clickCancelBtn();
+      }
 }

@@ -1,17 +1,21 @@
-package TestCase.CreateAccount;
+package TestCase.AccountActivities;
 
 import BaseTest.CommonTests;
+import PageNames.AccountEmailActivity;
 import PageNames.CreateAccount;
 import UtilityFiles.TestDataGenerator;
+import UtilityFiles.propertiesReader;
 import io.qameta.allure.Description;
 import org.testng.annotations.Test;
 
-public class CreateAccountTC1 extends CommonTests {
+public class EmailActivityTC1 extends CommonTests {
 
     @Test
-    @Description // Create Account
-    public void TC1_CreateAccount(){
+    @Description // Send Email Functionality
+    public void TC1_EmailActivity(){
+
         CreateAccount createAccount=new CreateAccount(driver);
+        AccountEmailActivity accountEmailActivity=new AccountEmailActivity(driver);
         TestDataGenerator data = new TestDataGenerator();
 
         createAccount.clickCreateBtnIcon();
@@ -36,7 +40,15 @@ public class CreateAccountTC1 extends CommonTests {
         createAccount.selectPicklistAssignedUser();
         createAccount.selectPickListTeam();
         createAccount.clickSaveBtn();
+        createAccount.clickIconBtnComposeEmail();
 
-
+        accountEmailActivity.enterTxtEmailCC(data.getEmail());
+        accountEmailActivity.enterTxtEmailBCC(data.getEmail());
+        accountEmailActivity.enterTxtEmailSubject(propertiesReader.readKey("EmailSubject1"));
+        accountEmailActivity.enterTxtEmailBody(propertiesReader.readKey("EmailBodyLine1"));
+        accountEmailActivity.enterTxtEmailBody(propertiesReader.readKey("EmailBodyLine2"));
+        accountEmailActivity.enterTxtEmailBody(propertiesReader.readKey("EmailBodyLine3"));
+        accountEmailActivity.enterTxtEmailBody(propertiesReader.readKey("EmailBodyLine4"));
+        accountEmailActivity.clickBtnSendEmail();
     }
 }

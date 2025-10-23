@@ -1,216 +1,162 @@
 package PageNames;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-
-import java.util.List;
 
 public class CreateAccount extends BasePage{
 
-    public CreateAccount (WebDriver driver){
+    public CreateAccount(WebDriver driver){
         super(driver);
     }
 
-    @FindBy (xpath = "//a[@title='Create']//i")
-    WebElement CreateMenuIcon;
-
-    @FindBy (xpath = "//li//a[text()='Account']")
-    WebElement Btn_CreateAccount;
-
-    @FindBy (xpath = "//button[text()='Full Form']")
-    WebElement Btn_FullForm;
-
-    @FindBy (xpath = "//input[@data-name='name']")
-    WebElement Txt_AccountName;
-
-    @FindBy (xpath = "//input[@data-name='website']")
-    WebElement Txt_Website;
-
-    @FindBy (xpath = "//input[@type='email']")
-    WebElement Txt_Email;
-
-    @FindBy (xpath = "//input[@autocomplete='espo-phoneNumber']")
-    WebElement Txt_OfficeMobileNumber;
-
-    @FindBy (xpath = "//textarea[@data-name='billingAddressStreet']")
-    WebElement Txt_BillingStreet;
-
-    @FindBy (xpath = "//input[@data-name='billingAddressCity']")
-    WebElement Txt_BillingCity;
-
-    @FindBy (xpath = "//input[@data-name='billingAddressState']")
-    WebElement Txt_BillingState;
-
-    @FindBy (xpath = "//input[@data-name='billingAddressPostalCode']")
-    WebElement Txt_BillingPostalCode;
-
-    @FindBy (xpath = "//input[@data-name='billingAddressCountry']")
-    WebElement Txt_BillingCountry;
-
-    @FindBy (xpath = "//textarea[@data-name='shippingAddressStreet']")
-    WebElement Txt_ShippingStreet;
-
-    @FindBy (xpath = "//input[@data-name='shippingAddressCity']")
-    WebElement Txt_ShippingCity;
-
-    @FindBy (xpath = "//input[@data-name='shippingAddressState']")
-    WebElement Txt_ShippingState;
-
-    @FindBy (xpath = "//input[@data-name='shippingAddressPostalCode']")
-    WebElement Txt_ShippingPostalCode;
-
-    @FindBy (xpath = "//input[@data-name='shippingAddressCountry']")
-    WebElement Txt_ShippingCountry;
-
-    @FindBy (xpath = "//div[@data-name='type']//div[contains(@class,'selectize-input')]")
-    WebElement PickList_Type;
-
-    @FindBy (xpath = "//div[text()='Customer']")
-    WebElement PickListValueType_Customer;
-
-    @FindBy (xpath = "//div[text()='Partner']")
-    WebElement PickListValueType_Partner;
-
-    @FindBy (xpath = "//div[@data-name='industry']//div[contains(@class,'selectize-input')]")
-    WebElement PickList_Industry;
-
-    @FindBy (xpath = "//div[text()='Healthcare']")
-    WebElement PickListValueIndustry_Healthcare;
-
-    @FindBy (xpath = "//textarea[@data-name='description']")
-    WebElement Txt_Description;
-
-    @FindBy (xpath = "//input[@data-name='assignedUserName']")
-    WebElement PickList_AssignedUserName;
-
-    @FindBy (xpath = "//div[text()='Jack Adams']")
-    List<WebElement> PickListValue_AssignedUserName;
-
-    @FindBy (xpath = "//div[@data-name='teams']//input[contains(@class,'main-element')]")
-    WebElement PickList_Teams;
-
-    @FindBy (xpath = "//div[text()='Sales']")
-    WebElement PickListValue_Teams;
-
-    @FindBy (xpath = "//button[text()='Save']")
-    WebElement Btn_Save;
-
-    @FindBy (xpath = "//p[text()='Name is required']")
-    WebElement ErrMsg_MandatoryAccountName;
+    By BtnCreateIcon = By.xpath("//i[@class='fas fa-plus icon']");
+    By LinkCreateAccount = By.xpath("//a[text()='Account']");
+    By BtnFullForm = By.xpath("//button[@data-name='fullForm']");
+    By TxtName = By.xpath("//input[@data-name='name']");
+    By TxtWebsite = By.xpath("//input[@data-name='website']");
+    By TxtEmail = By.xpath("//input[@type='email']");
+    By TxtPhone = By.xpath("//input[@autocomplete='espo-phoneNumber']");
+    By TxtBillingStreet = By.xpath("//textarea[@data-name='billingAddressStreet']");
+    By TxtBillingCity = By.xpath("//input[@data-name='billingAddressCity']");
+    By TxtBillingState = By.xpath("//input[@data-name='billingAddressState']");
+    By TxtBillingPostalCode = By.xpath("//input[@data-name='billingAddressPostalCode']");
+    By TxtBillingCountry = By.xpath("//input[@data-name='billingAddressCountry']");
+    By TxtShippingStreet = By.xpath("//textarea[@data-name='shippingAddressStreet']");
+    By TxtShippingCity = By.xpath("//input[@data-name='shippingAddressCity']");
+    By TxtShippingState = By.xpath("//input[@data-name='shippingAddressState']");
+    By TxtShippingPostalCode = By.xpath("//input[@data-name='shippingAddressPostalCode']");
+    By TxtShippingCountry = By.xpath("//input[@data-name='shippingAddressCountry']");
+    By PickListType = By.xpath("//div[@data-name='type']//div[contains(@class,'selectize-input')]");
+    By PickListTypeOption = By.xpath("//div[@data-value='Partner']");
+    By PickListIndustry = By.xpath("//div[@data-name='industry']//div[contains(@class,'selectize-input')]");
+    By PickListIndustryOption = By.xpath("//div[text()='Banking']");
+    By PickListAssignedUser = By.xpath("//div[@data-name='assignedUser']//button[@title='Select']");
+    By PickListAssignedUserOption = By.xpath("//a[text()='Jack Adams']");
+    By PickListTeams = By.xpath("//div[@data-name='teams']//button[@title='Select']");
+    By CheckboxSales = By.xpath("//td//input[@type='checkbox']");
+    By BtnSelectTeams = By.xpath("//button[text()='Select']");
+    By BtnSave = By.xpath("//button[text()='Save']");
+    By BtnCancel = By.xpath("//button[text()='Cancel']");
+    By BtnMoreOptions = By.xpath("//button[@type='button' and @data-toggle='dropdown']"); //Toggle/dropdown button beside "Cancel" button.
+    By BtnSaveAndNew = By.xpath("//a[text()='Save & New']");
+    By BtnSaveAndContinueEdit = By.xpath("//a[text()='Save & Continue Editing']");
+    By IconBtnComposeEmail = By.xpath("//button[@title='Compose Email']");
+    By IconBtnCreateContact = By.xpath("//button[@data-panel='contacts']");
 
 
-    public void ClickCreatePlusIcon(){
-        wait.until(ExpectedConditions.visibilityOf(CreateMenuIcon));
-        CreateMenuIcon.click();
+    public void clickCreateBtnIcon(){
+        wait.until(ExpectedConditions.elementToBeClickable(BtnCreateIcon)).click();
     }
 
-    public void ClickCreateAccount(){
-        wait.until(ExpectedConditions.visibilityOf(Btn_CreateAccount));
-        Btn_CreateAccount.click();
+    public void clickCreateAccountLink(){
+        wait.until(ExpectedConditions.elementToBeClickable(LinkCreateAccount)).click();
     }
 
-    public void ClickFullFormBtn(){
-        wait.until(ExpectedConditions.visibilityOf(Btn_FullForm));
-        Btn_FullForm.click();
+    public void clickButtonFullForm(){
+        wait.until(ExpectedConditions.elementToBeClickable(BtnFullForm)).click();
     }
 
-    public void EnterAccountName(String accountName){
-        Txt_AccountName.sendKeys(accountName);
+    public void enterName(String name){
+        wait.until(ExpectedConditions.presenceOfElementLocated(TxtName)).sendKeys(name);
     }
 
-    public void EnterWebsiteUrl(String website){
-        Txt_Website.sendKeys(website);
+    public void enterWebsite(String website){
+         driver.findElement(TxtWebsite).sendKeys(website);
     }
 
-    public void EnterEmail(String email){
-        Txt_Email.sendKeys(email);
+    public void enterEmail(String email){
+        driver.findElement(TxtEmail).sendKeys(email);
     }
 
-    public void EnterOfficeNumber(String officePhone){
-        Txt_OfficeMobileNumber.sendKeys(officePhone);
+    public void enterPhone(String phone){
+        driver.findElement(TxtPhone).sendKeys(phone);
     }
 
-    public void EnterBillingStreetAddress(String billingStreet){
-        Txt_BillingStreet.sendKeys(billingStreet);
+    public void enterBillingStreet(String BillingStreet){
+        driver.findElement(TxtBillingStreet).sendKeys(BillingStreet);
     }
 
-    public void EnterBillingCity(String billingCity){
-        Txt_BillingCity.sendKeys(billingCity);
+    public void enterBillingCity(String BillingCity){
+        driver.findElement(TxtBillingCity).sendKeys(BillingCity);
     }
 
-    public void EnterBillingState(String billingState){
-        Txt_BillingState.sendKeys(billingState);
+    public void enterBillingState(String BillingState){
+        driver.findElement(TxtBillingState).sendKeys(BillingState);
     }
 
-    public void EnterBillingPostalCode(String billingPostalCode){
-        Txt_BillingPostalCode.sendKeys(billingPostalCode);
+    public void enterBillingPostalCode(String BillingPostalCode){
+        driver.findElement(TxtBillingPostalCode).sendKeys(BillingPostalCode);
     }
 
-    public void EnterBillingCountry(String billingCountry){
-        Txt_BillingCountry.sendKeys(billingCountry);
+    public void enterBillingCountry(String BillingCountry){
+        driver.findElement(TxtBillingCountry).sendKeys(BillingCountry);
     }
 
-    public void EnterShippingStreetAddress(String shippingStreet){
-        Txt_ShippingStreet.sendKeys(shippingStreet);
+    public void enterShippingStreet(String ShippingStreet){
+        driver.findElement(TxtShippingStreet).sendKeys(ShippingStreet);
     }
 
-    public void EnterShippingCity(String shippingCity){
-        Txt_ShippingCity.sendKeys(shippingCity);
+    public void enterShippingCity(String ShippingCity){
+        driver.findElement(TxtShippingCity).sendKeys(ShippingCity);
     }
 
-    public void EnterShippingState(String shippingState){
-        Txt_ShippingState.sendKeys(shippingState);
+    public void enterShippingState(String ShippingState){
+        driver.findElement(TxtShippingState).sendKeys(ShippingState);
     }
 
-    public void EnterShippingPostalCode(String shippingPostalCode){
-        Txt_ShippingPostalCode.sendKeys(shippingPostalCode);
+    public void enterShippingPostalCode(String ShippingPostalCode){
+        driver.findElement(TxtShippingPostalCode).sendKeys(ShippingPostalCode);
     }
 
-    public void EnterShippingCountry(String shippingCountry){
-        Txt_ShippingCountry.sendKeys(shippingCountry);
+    public void enterShippingCountry(String ShippingCountry){
+        driver.findElement(TxtShippingCountry).sendKeys(ShippingCountry);
     }
 
-    public void SelectAccountType(){
-        wait.until(ExpectedConditions.visibilityOf(PickList_Type));
-        PickList_Type.click();
-        wait.until(ExpectedConditions.visibilityOf(PickListValueType_Customer));
-        PickListValueType_Customer.click();
+    public void selectPickListType(){
+        wait.until(ExpectedConditions.elementToBeClickable(PickListType)).click();
+        wait.until(ExpectedConditions.elementToBeClickable(PickListTypeOption)).click();
     }
 
-    public void SelectIndustryType(){
-        wait.until(ExpectedConditions.visibilityOf(PickList_Industry));
-        PickList_Industry.click();
-        wait.until(ExpectedConditions.visibilityOf(PickListValueIndustry_Healthcare));
-        PickListValueIndustry_Healthcare.click();
+    public void selectPickListIndustry(){
+        wait.until(ExpectedConditions.elementToBeClickable(PickListIndustry)).click();
+        wait.until(ExpectedConditions.elementToBeClickable(PickListIndustryOption)).click();
     }
 
-    public void EnterDescription(String accountDescription){
-        wait.until(ExpectedConditions.visibilityOf(Txt_Description));
-        Txt_Description.sendKeys(accountDescription);
+    public void selectPicklistAssignedUser(){
+        driver.findElement(PickListAssignedUser).click();
+        wait.until(ExpectedConditions.presenceOfElementLocated(PickListAssignedUserOption)).click();
     }
 
-    public void SelectAssignedUser(){
-        wait.until(ExpectedConditions.visibilityOf(PickList_AssignedUserName));
-        PickList_AssignedUserName.click();
-        wait.until(ExpectedConditions.visibilityOf(PickListValue_AssignedUserName.get(0)));
-        PickListValue_AssignedUserName.get(0).click();
+    public void selectPickListTeam(){
+        driver.findElement(PickListTeams).click();
+        wait.until(ExpectedConditions.presenceOfElementLocated(CheckboxSales)).click();
+        wait.until(ExpectedConditions.presenceOfElementLocated(BtnSelectTeams)).click();
     }
 
-    public void SelectTeam(){
-        wait.until(ExpectedConditions.visibilityOf(PickList_Teams)).click();
-        wait.until(ExpectedConditions.visibilityOf(PickListValue_Teams)).click();
+    public void clickSaveBtn(){
+        wait.until(ExpectedConditions.presenceOfElementLocated(BtnSave)).click();
     }
 
-    public void ClickSaveBtn(){
-        wait.until(ExpectedConditions.visibilityOf(Btn_Save));
-        Btn_Save.click();
+    public void clickCancelBtn(){
+        wait.until(ExpectedConditions.presenceOfElementLocated(BtnCancel)).click();
     }
 
-    public String getMandatoryAccNameErrMsg(){
-        wait.until(ExpectedConditions.visibilityOf(ErrMsg_MandatoryAccountName));
-        return ErrMsg_MandatoryAccountName.getText();
+    public void clickSaveandNewBtn(){
+        driver.findElement(BtnMoreOptions).click();
+        wait.until(ExpectedConditions.presenceOfElementLocated(BtnSaveAndNew)).click();
     }
 
+    public void clickSaveandContinueEditBtn(){
+        driver.findElement(BtnMoreOptions).click();
+        wait.until(ExpectedConditions.presenceOfElementLocated(BtnSaveAndContinueEdit)).click();
+    }
+
+    public void clickIconBtnComposeEmail(){
+        wait.until(ExpectedConditions.presenceOfElementLocated(IconBtnComposeEmail)).click();
+    }
+
+    public void clickIconBtnContact(){
+        wait.until(ExpectedConditions.presenceOfElementLocated(IconBtnCreateContact)).click();
+    }
 }

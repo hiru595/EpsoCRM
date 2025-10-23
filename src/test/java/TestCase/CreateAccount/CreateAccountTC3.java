@@ -6,11 +6,12 @@ import UtilityFiles.TestDataGenerator;
 import io.qameta.allure.Description;
 import org.testng.annotations.Test;
 
-public class CreateAccountTC1 extends CommonTests {
+public class CreateAccountTC3 extends CommonTests {
 
     @Test
-    @Description // Create Account
-    public void TC1_CreateAccount(){
+    @Description //Create Account Save and Continue Button
+
+    public void TC3_CreateAccount(){
         CreateAccount createAccount=new CreateAccount(driver);
         TestDataGenerator data = new TestDataGenerator();
 
@@ -35,8 +36,7 @@ public class CreateAccountTC1 extends CommonTests {
         createAccount.selectPickListIndustry();
         createAccount.selectPicklistAssignedUser();
         createAccount.selectPickListTeam();
-        createAccount.clickSaveBtn();
-
-
+        createAccount.clickSaveandNewBtn();
     }
+
 }

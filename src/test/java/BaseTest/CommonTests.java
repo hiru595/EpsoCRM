@@ -4,11 +4,14 @@ import com.github.javafaker.Faker;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
 import java.time.Duration;
+import java.util.HashMap;
+import java.util.Map;
 
 public class CommonTests {
 
@@ -19,7 +22,23 @@ public class CommonTests {
 
     @BeforeMethod
     public void startBrowser(){
-        driver=new ChromeDriver();
+        ChromeOptions options = new ChromeOptions();
+
+        // Disable Chrome autofill/address save popups
+        Map<String, Object> prefs = new HashMap<>();
+        prefs.put("autofill.profile_enabled", false);
+        prefs.put("autofill.credit_card_enabled", false);
+        prefs.put("profile.autofill_profile_enabled", false);
+        prefs.put("profile.autofill_credit_card_enabled", false);
+
+        options.setExperimentalOption("prefs", prefs);
+        options.addArguments("--disable-save-password-bubble");
+        options.addArguments("--disable-autofill-keyboard-accessory-view");
+        options.addArguments("--disable-notifications");
+        options.addArguments("--disable-popup-blocking");
+
+
+        driver=new ChromeDriver(options);
         faker=new Faker();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.manage().deleteAllCookies();
@@ -38,12 +57,12 @@ public class CommonTests {
 
 
     @AfterMethod
-    public void tearDown() throws InterruptedException {
+   /* public void tearDown() throws InterruptedException {
         Thread.sleep(15000);
         if (driver != null) {
             driver.quit();
         }
-    }
+    } */
 
     public String getName(){
         return faker.name().name();
@@ -56,6 +75,7 @@ public class CommonTests {
     public String getEmail(){
         return faker.internet().emailAddress();
     }
+
 
     public String getPhoneNumber(){
         return faker.phoneNumber().phoneNumber();
