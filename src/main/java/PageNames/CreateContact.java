@@ -32,6 +32,14 @@ public class CreateContact extends BasePage{
     By selectTeamValue = By.xpath("//div[text()='Sales']");
     By btnSave = By.xpath("//button[text()='Save']");
     By txtDescription = By.xpath("//textarea[@data-name='description']");
+    By btnMoreActions = By.xpath("//span[@class='fas fa-ellipsis-h']");
+    By btnCancel = By.xpath("//button[text()='Cancel']");
+    By btnSaveAndContinue = By.xpath("//a[text()='Save & Continue Editing']");
+    By btnSaveAndNew = By.xpath("//a[text()='Save & New']");
+    By msgContactSaveandContinue = By.xpath("//div[text()='Created']");
+    By msgContactSaveandNew = By.xpath("//div[text()='Created']");
+    By msgMandatoryLastName = By.xpath("//p[text()='Last Name is required']");
+    By msgInvalidEmail = By.xpath("//p[text()='Email should be a valid email']");
 
     public void clickBtnFullForm(){
         wait.until(ExpectedConditions.presenceOfElementLocated(BtnFullForm)).click();
@@ -51,8 +59,10 @@ public class CreateContact extends BasePage{
     }
 
     public void enterEmail(String contactEmail){
+        driver.findElement(txtEmail).clear();
         driver.findElement(txtEmail).sendKeys(contactEmail);
     }
+
 
     public void enterPhone(String contactPhone){
         driver.findElement(txtPhone).sendKeys(contactPhone);
@@ -98,5 +108,36 @@ public class CreateContact extends BasePage{
         driver.findElement(btnSave).click();
     }
 
+    public void clickCancelBtn(){
+        driver.findElement(btnCancel).click();
+    }
+
+    public void clickMoreActionBtn(){
+        driver.findElement(btnMoreActions).click();
+    }
+
+    public void clickSaveAndContinueBtn(){
+        driver.findElement(btnSaveAndContinue).click();
+    }
+
+    public void clickSaveAndNewBtn(){
+        driver.findElement(btnSaveAndNew).click();
+    }
+
+    public String getMsgSaveAndNewContact(){
+        return driver.findElement(msgContactSaveandNew).getText();
+    }
+
+    public String getMsgSaveAndContinueContact(){
+        return driver.findElement(msgContactSaveandContinue).getText();
+    }
+
+    public String getMsgMandatoryLastName(){
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(msgMandatoryLastName)).getText();
+    }
+
+    public String getMsgInvalidEmail(){
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(msgInvalidEmail)).getText();
+    }
 
 }

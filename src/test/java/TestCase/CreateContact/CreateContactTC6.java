@@ -9,17 +9,14 @@ import io.qameta.allure.Description;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class CreateContactTC1 extends CommonTests {
+public class CreateContactTC6 extends CommonTests {
 
     @Test
-    @Description //Create Contact
-
-    public void TC1_CreateContact(){
-
+    @Description //Invalid Email Format Testing
+    public void TC6_CreateContact(){
         CreateAccount createAccount=new CreateAccount(driver);
         CreateContact createContact=new CreateContact(driver);
         TestDataGenerator data = new TestDataGenerator();
-
 
         createAccount.clickCreateBtnIcon();
         createAccount.clickCreateAccountLink();
@@ -49,16 +46,17 @@ public class CreateContactTC1 extends CommonTests {
         createContact.enterTxtName();
         createContact.enterFirstName(data.getFirstName());
         createContact.enterLastName(data.getLastName());
-        createContact.enterEmail(data.getEmail());
-        createContact.enterPhone(data.getPhoneNumber());
-        createContact.uploadPhotoFile();
-        createContact.enterBirthDate();
-        createContact.selectAssignedUserName();
-        createContact.setSelectTeamName();
-        createContact.enterContactDescription(propertiesReader.readKey("ContactDecLine1"));
-        createContact.enterContactDescription(propertiesReader.readKey("ContactDecLine2"));
-        createContact.enterContactDescription(propertiesReader.readKey("ContactDecLine3"));
-        createContact.enterContactDescription(propertiesReader.readKey("ContactDecLine4"));
+
+        createContact.enterEmail(propertiesReader.readKey("ContactInvalidEmail2"));
         createContact.clickSaveBtn();
+        Assert.assertEquals(propertiesReader.readKey("MsgContactInvalidEmail"),createContact.getMsgInvalidEmail());
+
+        createContact.enterEmail(propertiesReader.readKey("ContactInvalidEmail3"));
+        createContact.clickSaveBtn();
+        Assert.assertEquals(propertiesReader.readKey("MsgContactInvalidEmail"),createContact.getMsgInvalidEmail());
+
+        createContact.enterEmail(propertiesReader.readKey("ContactInvalidEmail4"));
+        createContact.clickSaveBtn();
+        Assert.assertEquals(propertiesReader.readKey("MsgContactInvalidEmail"),createContact.getMsgInvalidEmail());
     }
 }

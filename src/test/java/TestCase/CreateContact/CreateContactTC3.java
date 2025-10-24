@@ -9,17 +9,15 @@ import io.qameta.allure.Description;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class CreateContactTC1 extends CommonTests {
+public class CreateContactTC3 extends CommonTests {
 
     @Test
-    @Description //Create Contact
-
-    public void TC1_CreateContact(){
+    @Description // Test Save&Continue button
+    public void TC3_CreateContact(){
 
         CreateAccount createAccount=new CreateAccount(driver);
         CreateContact createContact=new CreateContact(driver);
         TestDataGenerator data = new TestDataGenerator();
-
 
         createAccount.clickCreateBtnIcon();
         createAccount.clickCreateAccountLink();
@@ -50,15 +48,9 @@ public class CreateContactTC1 extends CommonTests {
         createContact.enterFirstName(data.getFirstName());
         createContact.enterLastName(data.getLastName());
         createContact.enterEmail(data.getEmail());
-        createContact.enterPhone(data.getPhoneNumber());
-        createContact.uploadPhotoFile();
-        createContact.enterBirthDate();
-        createContact.selectAssignedUserName();
-        createContact.setSelectTeamName();
-        createContact.enterContactDescription(propertiesReader.readKey("ContactDecLine1"));
-        createContact.enterContactDescription(propertiesReader.readKey("ContactDecLine2"));
-        createContact.enterContactDescription(propertiesReader.readKey("ContactDecLine3"));
-        createContact.enterContactDescription(propertiesReader.readKey("ContactDecLine4"));
-        createContact.clickSaveBtn();
+        createContact.clickMoreActionBtn();
+        createContact.clickSaveAndContinueBtn();
+
+        Assert.assertEquals(propertiesReader.readKey("MsgSaveAndContinueContact"),createContact.getMsgSaveAndContinueContact());
     }
 }

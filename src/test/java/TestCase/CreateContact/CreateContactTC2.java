@@ -4,22 +4,17 @@ import BaseTest.CommonTests;
 import PageNames.CreateAccount;
 import PageNames.CreateContact;
 import UtilityFiles.TestDataGenerator;
-import UtilityFiles.propertiesReader;
 import io.qameta.allure.Description;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class CreateContactTC1 extends CommonTests {
+public class CreateContactTC2 extends CommonTests {
 
     @Test
-    @Description //Create Contact
-
-    public void TC1_CreateContact(){
-
+    @Description // Cancel Create Contact
+    public void TC2_CreateContact(){
         CreateAccount createAccount=new CreateAccount(driver);
         CreateContact createContact=new CreateContact(driver);
         TestDataGenerator data = new TestDataGenerator();
-
 
         createAccount.clickCreateBtnIcon();
         createAccount.clickCreateAccountLink();
@@ -50,15 +45,6 @@ public class CreateContactTC1 extends CommonTests {
         createContact.enterFirstName(data.getFirstName());
         createContact.enterLastName(data.getLastName());
         createContact.enterEmail(data.getEmail());
-        createContact.enterPhone(data.getPhoneNumber());
-        createContact.uploadPhotoFile();
-        createContact.enterBirthDate();
-        createContact.selectAssignedUserName();
-        createContact.setSelectTeamName();
-        createContact.enterContactDescription(propertiesReader.readKey("ContactDecLine1"));
-        createContact.enterContactDescription(propertiesReader.readKey("ContactDecLine2"));
-        createContact.enterContactDescription(propertiesReader.readKey("ContactDecLine3"));
-        createContact.enterContactDescription(propertiesReader.readKey("ContactDecLine4"));
-        createContact.clickSaveBtn();
+        createContact.clickCancelBtn();
     }
 }
