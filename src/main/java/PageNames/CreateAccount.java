@@ -43,6 +43,7 @@ public class CreateAccount extends BasePage{
     By BtnSaveAndContinueEdit = By.xpath("//a[text()='Save & Continue Editing']");
     By IconBtnComposeEmail = By.xpath("//button[@title='Compose Email']");
     By IconBtnCreateContact = By.xpath("//button[@data-panel='contacts']");
+    By IconBtnCreateOpportunity = By.xpath("//button[@data-link='opportunities']");
 
 
     public void clickCreateBtnIcon(){
@@ -158,5 +159,9 @@ public class CreateAccount extends BasePage{
 
     public void clickIconBtnContact(){
         wait.until(ExpectedConditions.presenceOfElementLocated(IconBtnCreateContact)).click();
+    }
+
+    public void clickIconBtnOpportunity(){
+        wait.until(ExpectedConditions.presenceOfElementLocated(IconBtnCreateOpportunity)).click();
     }
 }
