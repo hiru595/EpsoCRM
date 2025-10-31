@@ -47,7 +47,7 @@ public class CreateOppTC1 extends CommonTests {
         createOpportunity.selectLeadSourse();
         createOpportunity.selectProductItem1();
 
-        Assert.assertEquals(createOpportunity.isProduct1Added(),true);
+        Assert.assertEquals(createOpportunity.isProduct1Added(),true, false);
 
         createOpportunity.selectProductItem2();
     }
