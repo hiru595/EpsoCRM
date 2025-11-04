@@ -4,6 +4,7 @@ import BaseTest.CommonTests;
 import PageNames.CreateAccount;
 import PageNames.CreateOpportunity;
 import UtilityFiles.TestDataGenerator;
+import UtilityFiles.propertiesReader;
 import io.qameta.allure.Description;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -45,10 +46,17 @@ public class CreateOppTC1 extends CommonTests {
         createOpportunity.enterName(data.getName());
         createOpportunity.selectCloseDate();
         createOpportunity.selectLeadSourse();
+        createOpportunity.enterOpportunityDescription(propertiesReader.readKey("OpportunityDecList1"));
+        createOpportunity.enterOpportunityDescription(propertiesReader.readKey("OpportunityDecList2"));
+        createOpportunity.enterOpportunityDescription(propertiesReader.readKey("OpportunityDecList3"));
+        createOpportunity.enterOpportunityDescription(propertiesReader.readKey("OpportunityDecList4"));
+        createOpportunity.selectAssignedUserName();
+        createOpportunity.selectTeamName();
         createOpportunity.selectProductItem1();
-
         Assert.assertEquals(createOpportunity.isProduct1Added(),true);
-
         createOpportunity.selectProductItem2();
+        createOpportunity.enterQtyProduct1();
+        createOpportunity.enterQtyProduct2();
+        createOpportunity.clickSaveBtn();
     }
 }
