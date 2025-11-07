@@ -1,10 +1,7 @@
 package PageNames;
 
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
@@ -34,8 +31,13 @@ public class CreateOpportunity extends BasePage{
     By PickListTeams = By.xpath("//div[@data-name='teams']//div//input[@placeholder='Select']");
     By PickListTeamsValue = By.xpath("//div[text()='Sales']");
     By ButtonAddItem = By.xpath("//button[@data-action='addItem']");
+    By ButtonBesideAddItem = By.xpath("//div[@class='btn-group']//button[@type='button']");
+    By ButtonAddItems = By.xpath("//a[text()='Add Products']");
+    By ButtonSelectMultipleItems = By.xpath("//button[text()='Select']");
     By ProductName1 = By.xpath("//a[text()='Buss Office Telephone']");
     By ProductName2 = By.xpath("//a[text()='Bright FHD Monitor']");
+    By TxtSeachBox = By.xpath("//input[@type='search' and @data-name='textFilter']");
+    By ButtonSearchIcon = By.xpath("//button[@title='Search']");
     By btnSave = By.xpath("//button[text()='Save']");
 
 
@@ -111,13 +113,54 @@ public class CreateOpportunity extends BasePage{
         TxtEnterQty.get(1).sendKeys("2");
     }
 
-    public void clickSaveBtn(){
+    public boolean isProduct2Added(){
         try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
+            return driver.findElement(ProductName2).isDisplayed();
+        } catch (NoSuchElementException e) {
+            return false;
         }
-        driver.findElement(btnSave).click();
     }
 
+    public void ClickBtnBesideAddItem(){
+        driver.findElement(ButtonBesideAddItem).click();
+    }
+
+    public void ClickBtnAddProducts(){
+        wait.until(ExpectedConditions.presenceOfElementLocated(ButtonAddItems)).click();
+    }
+
+    public void AddMultipleProducts(){
+        List<WebElement> CheckBoxItemNames = wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//span//input[@type='checkbox']")));
+        CheckBoxItemNames.get(2).click();
+        CheckBoxItemNames.get(3).click();
+        CheckBoxItemNames.get(9).click();
+    }
+
+    public void SearchAndAddProduct(){
+        WebElement SearchBox=wait.until(ExpectedConditions.visibilityOfElementLocated(TxtSeachBox));
+        SearchBox.sendKeys("Buss Office Telephone");
+        driver.findElement(ButtonSearchIcon).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(ProductName1)).click();
+    }
+
+    public void ClickSelectMultipleItemsBtn(){
+        driver.findElement(ButtonSelectMultipleItems).click();
+    }
+
+    public int getProductCount() {
+        List<WebElement> productList =
+                wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(
+                        By.xpath("//div[@data-role='product-item-name']//a")
+                ));
+
+        return productList.size();
+    }
+
+    public void ScrollWindow(){
+        js.executeScript("window.scrollBy(0,500);");
+    }
+
+    public void clickSaveBtn(){
+            driver.findElement(btnSave).click();
+    }
 }

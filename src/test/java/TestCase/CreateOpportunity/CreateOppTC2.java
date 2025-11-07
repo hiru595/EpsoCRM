@@ -9,11 +9,11 @@ import io.qameta.allure.Description;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class CreateOppTC1 extends CommonTests {
+public class CreateOppTC2 extends CommonTests {
 
     @Test
-    @Description // Create Opportunity On Account
-    public void TC1_CreateOpp(){
+    @Description //Create Opportunity with Multiple Items
+    public void TC2_CreateOpp(){
         CreateAccount createAccount=new CreateAccount(driver);
         CreateOpportunity createOpportunity=new CreateOpportunity(driver);
         TestDataGenerator data = new TestDataGenerator();
@@ -52,12 +52,12 @@ public class CreateOppTC1 extends CommonTests {
         createOpportunity.enterOpportunityDescription(propertiesReader.readKey("OpportunityDecList4"));
         createOpportunity.selectAssignedUserName();
         createOpportunity.selectTeamName();
-        createOpportunity.selectProductItem1();
-        Assert.assertEquals(createOpportunity.isProduct1Added(),true);
-        createOpportunity.selectProductItem2();
-        Assert.assertEquals(createOpportunity.isProduct2Added(),true);
-        createOpportunity.enterQtyProduct1();
-        createOpportunity.enterQtyProduct2();
+        createOpportunity.ClickBtnBesideAddItem();
+        createOpportunity.ClickBtnAddProducts();
+        createOpportunity.AddMultipleProducts();
+        createOpportunity.ClickSelectMultipleItemsBtn();
+        Assert.assertTrue(createOpportunity.getProductCount()>=3);
+        createOpportunity.ScrollWindow();
         createOpportunity.clickSaveBtn();
     }
 }
