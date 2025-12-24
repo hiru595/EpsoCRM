@@ -57,12 +57,12 @@ public class CommonTests {
 
 
     @AfterMethod
-   /* public void tearDown() throws InterruptedException {
+    public void tearDown() throws InterruptedException {
         Thread.sleep(15000);
         if (driver != null) {
             driver.quit();
         }
-    } */
+    }
 
     public String getName(){
         return faker.name().name();

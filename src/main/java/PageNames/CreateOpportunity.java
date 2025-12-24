@@ -38,7 +38,13 @@ public class CreateOpportunity extends BasePage{
     By ProductName2 = By.xpath("//a[text()='Bright FHD Monitor']");
     By TxtSeachBox = By.xpath("//input[@type='search' and @data-name='textFilter']");
     By ButtonSearchIcon = By.xpath("//button[@title='Search']");
-    By btnSave = By.xpath("//button[text()='Save']");
+    By BtnSave = By.xpath("//button[text()='Save']");
+    By BtnCancel = By.xpath("//button[text()='Cancel']");
+    By BtnMoreAction = By.xpath("//div[@class='btn-group actions-btn-group']//button[@data-toggle='dropdown']");
+    //More action button, three dots beside Cancel Button
+    By BtnSaveandContinue = By.xpath("//a[text()='Save & Continue Editing']");
+    By BtnSaveandNew = By.xpath("//a[text()='Save & New']");
+
 
 
     public void clickBtnFullForm(){
@@ -161,6 +167,23 @@ public class CreateOpportunity extends BasePage{
     }
 
     public void clickSaveBtn(){
-            driver.findElement(btnSave).click();
+            driver.findElement(BtnSave).click();
     }
+
+    public void clickCancelBtn(){
+        driver.findElement(BtnCancel).click();
+    }
+
+    public void clickMoreActionBtn(){
+        driver.findElement(BtnMoreAction).click();
+    }
+
+    public void clickSaveandContinueBtn(){
+        driver.findElement(BtnSaveandContinue).click();
+    }
+
+    public void clickSaveandNewBtn(){
+        driver.findElement(BtnSaveandNew).click();
+    }
+
 }
