@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true" name="C:/Users/Hiren/OneDrive - logicrain.com/IdeaProjects/EspoCRM">
+        <classes>
+            <class name="TestCase.AccountActivities.EmailActivityTC1">
+                <methods>
+                    <include name="TC1_EmailActivity"/>
+                </methods>
+            </class>
+            <class name="TestCase.CreateAccount.CreateAccountTC1">
+                <methods>
+                    <include name="TC1_CreateAccount"/>
+                </methods>
+            </class>
+            <class name="TestCase.CreateAccount.CreateAccountTC2">
+                <methods>
+                    <include name="TC2_CreateAccount"/>
+                </methods>
+            </class>
+            <class name="TestCase.CreateAccount.CreateAccountTC3">
+                <methods>
+                    <include name="TC3_CreateAccount"/>
+                </methods>
+            </class>
+            <class name="TestCase.CreateAccount.CreateAccountTC4">
+                <methods>
+                    <include name="TC4_CreateAccount"/>
+                </methods>
+            </class>
+            <class name="TestCase.CreateContact.CreateContactTC1">
+                <methods>
+                    <include name="TC1_CreateContact"/>
+                </methods>
+            </class>
+            <class name="TestCase.CreateContact.CreateContactTC2">
+                <methods>
+                    <include name="TC2_CreateContact"/>
+                </methods>
+            </class>
+            <class name="TestCase.CreateContact.CreateContactTC3">
+                <methods>
+                    <include name="TC3_CreateContact"/>
+                </methods>
+            </class>
+            <class name="TestCase.CreateContact.CreateContactTC4">
+                <methods>
+                    <include name="TC4_CreateContact"/>
+                </methods>
+            </class>
+            <class name="TestCase.CreateContact.CreateContactTC5">
+                <methods>
+                    <include name="TC5_CreateContact"/>
+                </methods>
+            </class>
+            <class name="TestCase.CreateContact.CreateContactTC6">
+                <methods>
+                    <include name="TC6_CreateContact"/>
+                </methods>
+            </class>
+            <class name="TestCase.CreateOpportunity.CreateOppTC1">
+                <methods>
+                    <include name="TC1_CreateOpp"/>
+                </methods>
+            </class>
+            <class name="TestCase.CreateOpportunity.CreateOppTC2">
+                <methods>
+                    <include name="TC2_CreateOpp"/>
+                </methods>
+            </class>
+            <class name="TestCase.CreateOpportunity.CreateOppTC3">
+                <methods>
+                    <include name="TC3_CreateOpp"/>
+                </methods>
+            </class>
+            <class name="TestCase.CreateOpportunity.CreateOppTC4">
+                <methods>
+                    <include name="TC4_CreateOpp"/>
+                </methods>
+            </class>
+            <class name="TestCase.CreateOpportunity.CreateOppTC5">
+                <methods>
+                    <include name="TC5_CreateOpp"/>
+                </methods>
+            </class>
+            <class name="TestCase.CreateOpportunity.CreateOppTC6">
+                <methods>
+                    <include name="TC6_CreateOpp"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
