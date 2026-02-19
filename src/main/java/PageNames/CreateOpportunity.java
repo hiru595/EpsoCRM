@@ -34,8 +34,8 @@ public class CreateOpportunity extends BasePage{
     By ButtonBesideAddItem = By.xpath("//div[@class='btn-group']//button[@type='button']");
     By ButtonAddItems = By.xpath("//a[text()='Add Products']");
     By ButtonSelectMultipleItems = By.xpath("//button[text()='Select']");
-    By ProductName1 = By.xpath("//a[text()='Buss Office Telephone']");
-    By ProductName2 = By.xpath("//a[text()='Bright FHD Monitor']");
+    By ProductName1 = By.xpath("//a[contains(text(),'Buss')]");
+    By ProductName2 = By.xpath("//a[contains(text(),'Bright')]");
     By TxtSeachBox = By.xpath("//input[@type='search' and @data-name='textFilter']");
     By ButtonSearchIcon = By.xpath("//button[@title='Search']");
     By BtnSave = By.xpath("//button[text()='Save']");
@@ -99,10 +99,12 @@ public class CreateOpportunity extends BasePage{
         TxtEnterQty.get(0).sendKeys("3");
     }
 
-    public boolean isProduct1Added(){
+
+    public boolean isProduct1Added() {
         try {
+            wait.until(ExpectedConditions.visibilityOfElementLocated(ProductName1));
             return driver.findElement(ProductName1).isDisplayed();
-        } catch (NoSuchElementException e) {
+        } catch (TimeoutException e) {
             return false;
         }
     }
@@ -119,13 +121,15 @@ public class CreateOpportunity extends BasePage{
         TxtEnterQty.get(1).sendKeys("2");
     }
 
-    public boolean isProduct2Added(){
+    public boolean isProduct2Added() {
         try {
+            wait.until(ExpectedConditions.visibilityOfElementLocated(ProductName2));
             return driver.findElement(ProductName2).isDisplayed();
-        } catch (NoSuchElementException e) {
+        } catch (TimeoutException e) {
             return false;
         }
     }
+
 
     public void ClickBtnBesideAddItem(){
         driver.findElement(ButtonBesideAddItem).click();

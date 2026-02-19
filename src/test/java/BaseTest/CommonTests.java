@@ -5,7 +5,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
@@ -24,6 +26,7 @@ public class CommonTests {
     public void startBrowser(){
         ChromeOptions options = new ChromeOptions();
 
+
         // Disable Chrome autofill/address save popups
         Map<String, Object> prefs = new HashMap<>();
         prefs.put("autofill.profile_enabled", false);
@@ -39,20 +42,24 @@ public class CommonTests {
 
 
         driver=new ChromeDriver(options);
+        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(60));
+
         faker=new Faker();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.manage().deleteAllCookies();
         driver.manage().window().maximize();
-        driver.get("https://www.espocrm.com/demo/");
-        driver.findElement(By.xpath("//a[text()='Live Demo']")).click();
+        driver.get("https://demo.us.espocrm.com/");
 
-        Select userName=new Select(driver.findElement(By.xpath("//select[@name='username']")));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("username")));
+        Select userName = new Select(driver.findElement(By.name("username")));
         userName.selectByVisibleText("Administrator");
 
-        Select userLanguage=new Select(driver.findElement(By.xpath("//select[@id='field-language']")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("field-language")));
+        Select userLanguage = new Select(driver.findElement(By.id("field-language")));
         userLanguage.selectByValue("en_US");
 
-        driver.findElement(By.xpath("//button[text()='Login']")).click();
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[text()='Login']"))).click();
     }
 
 

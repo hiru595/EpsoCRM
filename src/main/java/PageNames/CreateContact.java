@@ -85,6 +85,12 @@ public class CreateContact extends BasePage{
     }
 
     public void selectAssignedUserName(){
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        js.executeScript("window.scrollTo(0, 0);");
         wait.until(ExpectedConditions.presenceOfElementLocated(selectAssignedUser)).click();
         wait.until(ExpectedConditions.presenceOfElementLocated(selectAssignedUservalue)).click();
     }

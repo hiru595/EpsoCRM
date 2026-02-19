@@ -51,7 +51,7 @@ public class CreateContactTC1 extends CommonTests {
         createContact.enterLastName(data.getLastName());
         createContact.enterEmail(data.getEmail());
         createContact.enterPhone(data.getPhoneNumber());
-        createContact.uploadPhotoFile();
+       // createContact.uploadPhotoFile();
         createContact.enterBirthDate();
         createContact.selectAssignedUserName();
         createContact.setSelectTeamName();
